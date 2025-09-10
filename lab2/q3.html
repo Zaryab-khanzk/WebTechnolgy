@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tech Conference Registration</title>
+</head>
+<body>
+    <h1>Tech Conference Registration Form</h1>
+    
+    <form>
+     
+        <h2>Participant Information</h2>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required><br><br>
+   
+        <h2>Ticket Type</h2>
+        <label for="ticket">Select Ticket Type:</label>
+        <select id="ticket" name="ticket" required>
+            <option value="">--Select--</option>
+            <option value="standard">Standard</option>
+            <option value="vip">VIP</option>
+            <option value="student">Student</option>
+        </select><br><br>
+     
+        <h2>Workshops</h2>
+        <input type="checkbox" id="ai" name="workshops" value="AI">
+        <label for="ai">AI</label><br>
+        
+        <input type="checkbox" id="cyber" name="workshops" value="Cybersecurity">
+        <label for="cyber">Cybersecurity</label><br>
+        
+        <input type="checkbox" id="webdev" name="workshops" value="Web Development">
+        <label for="webdev">Web Development</label><br><br>
+       
+        <h2>Payment Details</h2>
+        <label for="tickets">Number of Tickets:</label>
+        <input type="number" id="tickets" name="tickets" min="1" required><br><br>
+      
+        <h2>Student ID (Only if Student Ticket Selected)</h2>
+        <label for="studentid">Upload Proof of Student ID:</label>
+        <input type="file" id="studentid" name="studentid" accept=".jpg,.jpeg,.png,.pdf"><br><br>
+       
+        <h2>Terms and Conditions</h2>
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">I agree to the event policies.</label><br><br>
+      
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

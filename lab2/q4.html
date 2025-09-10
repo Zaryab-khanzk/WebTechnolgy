@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Membership Application</title>
+</head>
+<body>
+    <h1>Library Membership Application Form</h1>
+    
+    <form>
+   
+        <h2>Member Information</h2>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label><br>
+        
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br>
+        
+        <input type="radio" id="other" name="gender" value="Other">
+        <label for="other">Other</label><br><br>
+        
+        <h2>Membership Type</h2>
+        <label for="membership">Select Type:</label>
+        <select id="membership" name="membership" required>
+            <option value="">--Select--</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
+        </select><br><br>
+       
+        <h2>Book Preferences</h2>
+        <input type="checkbox" id="fiction" name="preferences" value="Fiction">
+        <label for="fiction">Fiction</label><br>
+        
+        <input type="checkbox" id="science" name="preferences" value="Science">
+        <label for="science">Science</label><br>
+        
+        <input type="checkbox" id="technology" name="preferences" value="Technology">
+        <label for="technology">Technology</label><br>
+        
+        <input type="checkbox" id="history" name="preferences" value="History">
+        <label for="history">History</label><br><br>
+     
+        <h2>Upload</h2>
+        <label for="photo">Upload Passport-size Photo (JPG/PNG only):</label>
+        <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png" required><br><br>
+        
+        <h2>Declaration</h2>
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">I agree to follow library rules and policies.</label><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

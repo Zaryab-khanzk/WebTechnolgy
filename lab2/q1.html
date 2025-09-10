@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Question 1
+    </title>
+</head>
+<body>
+    <h1>
+        Online Job Application Form
+    </h1>
+    <form>
+        <h2>
+            Personal Information
+        </h2>
+        <label for="fullname"><h3>Full Name:</h3></label>
+        <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+        <label for="email"><h3>Email:</h3></label>
+        <input type="email" id="email" required placeholder="Enter your email">
+        <h3>
+            Date of Birth:
+        </h3> 
+        <input type="date" name="dob" required>
+        <h3>
+        Login Credentials
+        </h3>
+       <label for="password">Create Password &nbsp;</label>
+       <input type="password" id="password" name="password" required>
+       <label for="password2">Confirm Password &nbsp;</label>
+       <input type="password" id="password2" name="password2" required>
+      
+       <h2>
+        Postion and Skills
+       </h2>
+       <select name="Postion" required>
+        <option value="" disabled selected>Select the postion</option>
+        <option value="Web Devolper">Web Developer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Network Engineer">Network Engineer</option>
+        </select>
+        <h2>Skills:</h2>
+        <P>Select the Skills</P>
+        <input type="checkbox" name="skills" value="Java"> Java<br>
+        <input type="checkbox" name="skills" value="HTML"> HTML<br>
+        <input type="checkbox" name="skills" value="CSS"> CSS<br>
+        <input type="checkbox" name="skills" value="JavaScript"> JavaScript<br>
+        <input type="checkbox" name="skills" value="Python"> Python<br><br>
+
+        <h2>Experience and Availability</h2>
+        <label for="experience">Years of Experience:</label>
+        <input type="number" id="experience" name="experience" min="0" required placeholder="Enter years"><br><br>
+
+        <label>Willing to Relocate:</label>
+        <input type="radio" id="relocate_yes" name="relocate" value="Yes" required>
+        <label for="relocate_yes">Yes</label>
+        <input type="radio" id="relocate_no" name="relocate" value="No">
+        <label for="relocate_no">No</label><br>
+        <br>
+        
+        <label for="fileupload">Upload file:</label>
+        <input type="file" id="fileupload" name="fileupload" accept=".pdf,.docx" required><br><br>
+
+        <label for="ImageUpload">Upload Image: </label>
+        <input type="file" id="ImageUpload" name="ImageUpload" accept=".jpg,.png" required><br><br>
+
+        <label for="coverletter">Cover Letter:</label><br>
+        <textarea id="coverletter" name="coverletter" rows="5" cols="40" placeholder="Write your cover letter here..." required></textarea><br><br>
+        <label>
+        <input type="checkbox" name="confirm" required>
+        I confirm that all information provided is true
+        </label><br><br>
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+</html>
