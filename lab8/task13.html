@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flash Message</title>
+    <style>
+        #message {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 20%;
+            visibility: visible;
+        }
+        #stopBtn {
+            display: block;
+            margin: 30px auto;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Welcome to CUI</div>
+    <button id="stopBtn">Stop</button>
+
+    <script>
+        const message = document.getElementById('message');
+        const stopBtn = document.getElementById('stopBtn');
+
+        let visible = true;
+        const intervalId = setInterval(() => {
+            visible = !visible; 
+            message.style.visibility = visible ? 'visible' : 'hidden';
+        }, 2000);
+        stopBtn.addEventListener('click', () => {
+            clearInterval(intervalId);
+            message.style.visibility = 'visible'; 
+        });
+    </script>
+</body>
+</html>
+
