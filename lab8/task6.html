@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculator</title>
+</head>
+<body>
+    <script>
+
+        function calculateGrade(avg) {
+            if (avg >= 90) {
+                return 'A';
+            } else if (avg >= 80) {
+                return 'B';
+            } else if (avg >= 70) {
+                return 'C';
+            } else if (avg >= 60) {
+                return 'D';
+            } else if (avg >= 50) {
+                return 'E';
+            } else {
+                return 'F';
+            }
+        }
+    
+        let marks = [];
+        for (let i = 1; i <= 5; i++) {
+            let mark = parseFloat(prompt(`Enter marks for subject ${i}:`));
+         
+            while (isNaN(mark) || mark < 0 || mark > 100) {
+                mark = parseFloat(prompt(`Invalid input. Enter valid marks (0-100) for subject ${i}:`));
+            }
+            marks.push(mark);
+        }
+        const total = marks.reduce((sum, current) => sum + current, 0);
+        const average = total / marks.length;
+
+       
+        const grade = calculateGrade(average);
+
+        alert(`Total Marks: ${total}\nAverage Marks: ${average.toFixed(2)}\nGrade: ${grade}`);
+    </script>
+</body>
+</html>
