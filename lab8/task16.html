@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comment Filter</title>
+</head>
+<body>
+    <textarea id="comment" rows="6" cols="50" placeholder="Write your comment here..."></textarea><br>
+    <button onclick="checkComment()">Check Comment</button>
+    <p>Filtered Comment:</p>
+    <div id="filteredComment" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; width: 400px; min-height: 80px;"></div>
+
+    <script>
+        function checkComment() {
+            const bannedWords = /(spam|fake)/gi;
+            const commentInput = document.getElementById('comment');
+            const filteredCommentDiv = document.getElementById('filteredComment');
+            const originalText = commentInput.value;
+            const filteredText = originalText.replace(bannedWords, '***');
+            filteredCommentDiv.textContent = filteredText;
+        }
+    </script>
+</body>
+</html>
