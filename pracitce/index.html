@@ -2,6 +2,11 @@
 <head>
     <title>Practice page</title>
     <style>
+        body{
+            background-color: aquamarine;
+            min-height: 100vh;
+            padding: 50px 0;
+        }
         .card{
             text-align: center;
             border-width: 10px;
@@ -11,6 +16,16 @@
             padding: 50px;
             margin-left: 700px;
             margin-right: 700px;
+        }
+
+        button{
+            padding: 5px;
+            border-radius: 10px;
+            border-color:aquamarine;
+        }
+
+        button:hover{
+            background-color: aqua;
         }
     </style>
 </head>
@@ -42,6 +57,8 @@
                 <option value="7">Seventh</option>
                 <option value="8">Eight</option>
             </select>
+            <br><br>
+            <button type="calculate">Calculate</button>
         </form>
     </div>
 </body>
