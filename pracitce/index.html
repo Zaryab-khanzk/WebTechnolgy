@@ -17,15 +17,27 @@
             margin-left: 700px;
             margin-right: 700px;
         }
-
         button{
-            padding: 5px;
+            padding: 10px 20px;
             border-radius: 10px;
             border-color:aquamarine;
+            background-color: white;
+            font-weight: bold;
+            cursor: pointer;
         }
-
         button:hover{
             background-color: aqua;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        #results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: none;
         }
     </style>
 </head>
@@ -34,36 +46,152 @@
         <form id="studentform">
             <label for="fname">First name</label>
             <input type="text" id="fname" name="firstname" placeholder="Enter your first name"><br><br>
-            <span class="error" id="nameError" style="color: red; display: none;">Name cannot have numbers!!</span><br><br>
+            <span class="error" id="nameError" style="display: none;">Name cannot have numbers!!</span>
+            
             <label for="sub1">Subject 1</label>
-            <input type="number" id="sub1" name="subject1" placeholder=" enter your marks"> <br><br>
+            <input type="number" id="sub1" name="subject1" placeholder="enter your marks"> <br><br>
             <label for="sub2">Subject 2</label>
-            <input type="number" id="sub2" name="subject2" placeholder=" enter your marks"> <br><br>
+            <input type="number" id="sub2" name="subject2" placeholder="enter your marks"> <br><br>
             <label for="sub3">Subject 3</label>
-            <input type="number" id="sub3" name="subject3" placeholder=" enter your marks"> <br><br>
-            <label for="sub1">Subject 4</label>
-            <input type="number" id="sub4" name="subject4" placeholder=" enter your marks"> <br><br>
+            <input type="number" id="sub3" name="subject3" placeholder="enter your marks"> <br><br>
+            <label for="sub4">Subject 4</label>
+            <input type="number" id="sub4" name="subject4" placeholder="enter your marks"> <br><br>
             <label for="sub5">Subject 5</label>
-            <input type="number" id="sub5" name="subject5" placeholder=" enter your marks"> <br><br>
+            <input type="number" id="sub5" name="subject5" placeholder="enter your marks"> <br><br>
             <label for="sub6">Subject 6</label>
-            <input type="number" id="sub6" name="subject6" placeholder=" enter your marks"> <br><br>
+            <input type="number" id="sub6" name="subject6" placeholder="enter your marks"> <br><br>
+            
             <label for="semester">Your Semester</label>
             <select id="semester" name="semester">
                 <option value="1">First</option>
                 <option value="2">Second</option>
                 <option value="3">Third</option>
-                <option value="4">Forth</option>
+                <option value="4">Fourth</option>
                 <option value="5">Fifth</option>
                 <option value="6">Sixth</option>
                 <option value="7">Seventh</option>
-                <option value="8">Eight</option>
+                <option value="8">Eighth</option>
             </select>
             <br><br>
             <button type="submit">Calculate</button>
         </form>
-    </div>
-    <script>
 
+        <!-- Results Display -->
+        <div id="results">
+            <h2>Results</h2>
+            <p><strong>Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Semester:</strong> <span id="displaySemester"></span></p>
+            <p><strong>Total Marks:</strong> <span id="totalMarks"></span> / 600</p>
+            <p><strong>Percentage:</strong> <span id="percentage"></span>%</p>
+            <p><strong>Grade:</strong> <span id="grade"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // FIXED: Form ID matches HTML now
+        const form = document.getElementById('studentform');
+        const nameInput = document.getElementById('fname');
+        const nameError = document.getElementById('nameError');
+        const semesterSelect = document.getElementById('semester');
+
+        // Get all subject inputs
+        const sub1 = document.getElementById('sub1');
+        const sub2 = document.getElementById('sub2');
+        const sub3 = document.getElementById('sub3');
+        const sub4 = document.getElementById('sub4');
+        const sub5 = document.getElementById('sub5');
+        const sub6 = document.getElementById('sub6');
+
+        // ADDED: Get result display elements
+        const resultsDiv = document.getElementById('results');
+        const displayName = document.getElementById('displayName');
+        const displaySemester = document.getElementById('displaySemester');
+        const totalMarksSpan = document.getElementById('totalMarks');
+        const percentageSpan = document.getElementById('percentage');
+        const gradeSpan = document.getElementById('grade');
+
+        // Validate name while typing
+        nameInput.addEventListener('input', function() {
+            const hasNumbers = /[0-9]/.test(this.value);
+            if (hasNumbers) {
+                nameError.style.display = 'block';
+                nameInput.style.border = '2px solid red';
+            } else {
+                nameError.style.display = 'none';
+                nameInput.style.border = '';
+            }
+        });
+
+        // Validate marks function
+        function validateMarks(input) {
+            input.addEventListener('input', function() {
+                if (this.value < 0) this.value = 0;
+                if (this.value > 100) this.value = 100;
+            });
+        }
+
+        // Apply validation to all subjects (ONLY ONCE)
+        validateMarks(sub1);
+        validateMarks(sub2);
+        validateMarks(sub3);
+        validateMarks(sub4);
+        validateMarks(sub5);
+        validateMarks(sub6);
+
+        // Calculate grade function
+        function calculateGrade(percentage) {
+            if (percentage >= 90) return 'A+';
+            else if (percentage >= 80) return 'A';
+            else if (percentage >= 70) return 'B';
+            else if (percentage >= 60) return 'C';
+            else if (percentage >= 50) return 'D';
+            else return 'F';
+        }
+
+        // Form submission (ONLY ONE TIME)
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation checks
+            if (/[0-9]/.test(nameInput.value)) {
+                alert('Please remove numbers from name!');
+                return;
+            }
+            
+            if (nameInput.value.trim() === '') {
+                alert('Please enter your name!');
+                return;
+            }
+            
+            if (!sub1.value || !sub2.value || !sub3.value || 
+                !sub4.value || !sub5.value || !sub6.value) {
+                alert('Please fill all subject marks!');
+                return;
+            }
+
+            // Calculate
+            const marks1 = parseFloat(sub1.value);
+            const marks2 = parseFloat(sub2.value);
+            const marks3 = parseFloat(sub3.value);
+            const marks4 = parseFloat(sub4.value);
+            const marks5 = parseFloat(sub5.value);
+            const marks6 = parseFloat(sub6.value);
+
+            const totalMarks = marks1 + marks2 + marks3 + marks4 + marks5 + marks6;
+            const percentage = (totalMarks / 600) * 100;
+            const grade = calculateGrade(percentage);
+
+            // Display results
+            displayName.textContent = nameInput.value;
+            displaySemester.textContent = semesterSelect.options[semesterSelect.selectedIndex].text;
+            totalMarksSpan.textContent = totalMarks;
+            percentageSpan.textContent = percentage.toFixed(2);
+            gradeSpan.textContent = grade;
+
+            // Show results
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
